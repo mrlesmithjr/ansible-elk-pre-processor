@@ -1,7 +1,7 @@
 ---
 # defaults file for ansible-elk-pre-processor
 clear_logstash_config: false
-config_logstash: false
+config_logstash: true
 logstash_config_dir: /etc/logstash/conf.d
 logstash_log_dir: /var/log/logstash
 reset_logstash_config: false
@@ -58,3 +58,4 @@ logstash_inputs:
 logstash_outputs:
   - output: redis
     output_host: '{{ logstash_server_fqdn }}'
+rundeck_logstash_port: 9700
