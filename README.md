@@ -6,7 +6,17 @@ Installs ELK Stack Role (ELK-Pre-Processor)
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Prior to using this role you will want to add your nodes to the appropriate inventory group. You should create 2 elk-pre-processor nodes. Examples below.
+#####hosts inventory
+````
+[elk-nodes]
+elk-pre-processor-1
+elk-pre-processor-2
+
+[elk-pre-processor-nodes]
+elk-pre-processor-1
+elk-pre-processor-2
+````
 
 Role Variables
 --------------
