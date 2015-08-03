@@ -20,10 +20,11 @@ elk-pre-processor-2
 
 Role Variables
 --------------
-
+defaults/main.yml
 ````
 clear_logstash_config: false
-config_logstash: false
+config_hosts_file: false  #defines if /etc/hosts should include ELK hosts...if DNS not configured...Vagrant testing.
+config_logstash: true
 logstash_config_dir: /etc/logstash/conf.d
 logstash_log_dir: /var/log/logstash
 reset_logstash_config: false
@@ -80,6 +81,14 @@ logstash_inputs:
 logstash_outputs:
   - output: redis
     output_host: '{{ logstash_server_fqdn }}'
+rundeck_logstash_port: 9700
+````
+vars/main.yml
+````
+syslog_servers:
+  - name: localhost
+    port: 10514
+    proto: tcp
 ````
 
 Dependencies
