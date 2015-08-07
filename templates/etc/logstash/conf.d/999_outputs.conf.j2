@@ -4,10 +4,16 @@
 {%   for item in logstash_outputs %}
 output {
   {{ item.output }} {
-    host => "{{ item.output_host }}"
+{%     if item.host is defined %}
+    host => "{{ item.host }}"
+{%     endif %}
 {%     if item.output == "redis" %}
     data_type => "list"
     key => "logstash"
+{%     endif %}
+{%     if item.output == "rabbitmq" %}
+    exchange => "{{ item.exchange }}"
+    exchange_type => "{{ item.exchange_type }}"
 {%     endif %}
   }
 }

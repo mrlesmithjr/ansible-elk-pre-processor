@@ -80,7 +80,11 @@ logstash_inputs:
     type: rundeck
 logstash_outputs:
   - output: redis
-    output_host: '{{ logstash_server_fqdn }}'
+    host: '{{ logstash_server_fqdn }}'
+#  - output: rabbitmq
+#    exchange: logstash
+#    exchange_type: fanout
+#    host: 10.0.101.128
 logstash_server_fqdn: []  #defines logstash server...should be vip fqdn for elk-haproxy-nodes...define here or globally in group_vars/elk-nodes
 rundeck_logstash_port: 9700
 ````
