@@ -25,9 +25,12 @@ defaults/main.yml
 clear_logstash_config: false
 config_hosts_file: false  #defines if /etc/hosts should include ELK hosts...if DNS not configured...Vagrant testing.
 config_logstash: true
+esxinaming:  #define your VMware ESXi naming standards if used...this should be set to host pattern...example - esxi01.everythingshouldbevirtual.local - define as esxi
+  - esxi
+hadoopnaming: [] #define your Hadoop naming standards if used...this should be set to host pattern...example - hd01.everythingshouldbevirtual.local - define as hd
+#  - hd  #uncomment and remove '' above if setting
 logstash_config_dir: /etc/logstash/conf.d
 logstash_log_dir: /var/log/logstash
-reset_logstash_config: false
 logstash_configs:
   - 000_inputs
   - 001_filters
@@ -86,6 +89,14 @@ logstash_outputs:
 #    exchange_type: fanout
 #    host: 10.0.101.128
 logstash_server_fqdn: []  #defines logstash server...should be vip fqdn for elk-haproxy-nodes...define here or globally in group_vars/elk-nodes
+netscalernaming: [] #define your Citrix Netscaler naming standards if used...this should be set to host pattern...example - nsvpx01.everythingshouldbevirtual.local - define as nsvpx
+#  - nsvpx  #uncomment and remove '' above if setting
+nsxnaming: [] #define your VMware NSX naming standards if used...this should be set to host pattern...example - nsx-rt01.everythingshouldbevirtual.local - define as nsx-rt
+#  - vShield-edge  #uncomment and remove '' above if setting
+#  - nsx-rt  #uncomment and remove '' above if setting
+pfsensenaming:  #define your PFSense firewall naming standards if used...this should be set to host pattern...example - pfsense01.everythingshouldbevirtual.local - define as pfsense
+  - pfsense
+reset_logstash_config: false
 rundeck_logstash_port: 9700
 ````
 vars/main.yml
