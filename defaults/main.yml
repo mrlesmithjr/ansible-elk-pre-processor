@@ -19,6 +19,8 @@ logstash_configs:
   - 240_filters_quagga
 #  - 250_filters_vmware_nsx
   - 999_outputs
+logstash_configs_remove:  #define configs that were in logstash_configs but no longer needed below to remove them nodes.
+  - 250_filters_vmware_nsx
 logstash_file_inputs:
   - path: /var/log/nginx/access.log
     type: nginx-access

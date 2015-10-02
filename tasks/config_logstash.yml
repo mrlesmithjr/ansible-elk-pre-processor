@@ -16,6 +16,11 @@
   notify: restart logstash
   with_items: logstash_configs
 
+- name: config_logstash | removing logstash configs that are defined in logstash_configs_remove
+  file: path={{ logstash_config_dir }}/{{ item }}.conf state=absent
+  notify: restart logstash
+  with_items: logstash_configs_remove
+
 - name: config_logstash | copying elasticsearch-template.json
   template: src=opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json.j2 dest=/opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json owner=logstash group=logstash
   notify: restart logstash
