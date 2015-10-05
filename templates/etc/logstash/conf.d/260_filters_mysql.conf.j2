@@ -5,26 +5,11 @@ filter {
   if "syslog" in [tags] and "pre-processed" not in [tags] {
     if [pre_syslog_program] == "mysqld" {
       multiline {
-        pattern => "memb {"
-        what => "next"
-      }
-      multiline {
-        pattern => "} joined {"
+        pattern => "^%{NUMBER} *%{NUMBER}"
+        negate => true
         what => "previous"
       }
-      multiline {
-        pattern => "} left {"
-        what => "previous"
-      }
-      multiline {
-        pattern => "} partitioned {"
-        what => "previous"
-      }
-      multiline {
-        pattern => "}\)"
-        what => "previous"
-      }
-      if "multiline" in [tags] and "WSREP" in [message] {
+      if "multiline" in [tags] {
         mutate {
           add_tag => [ "MySQL", "MySQL-Replication", "pre-processed" ]
         }
