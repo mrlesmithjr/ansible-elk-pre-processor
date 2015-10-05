@@ -9,11 +9,25 @@ filter {
         what => "next"
       }
       multiline {
+        pattern => "} joined {"
+        what => "previous"
+      }
+      multiline {
+        pattern => "} left {"
+        what => "previous"
+      }
+      mulitline {
+        pattern => "} partitioned {"
+        what => "previous"
+      }
+      multiline {
         pattern => "}\)"
         what => "previous"
       }
-      mutate {
-        add_tag => [ "MySQL", "MySQL-Replication", "pre-processed" ]
+      if "multiline" in [tags] and "WSREP" in [message] {
+        mutate {
+          add_tag => [ "MySQL", "MySQL-Replication", "pre-processed" ]
+        }
       }
       mutate {
         rename => [ "pre_syslog_program", "syslog_program" ]
