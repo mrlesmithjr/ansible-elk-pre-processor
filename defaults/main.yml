@@ -17,11 +17,10 @@ logstash_configs:  #define configs to load...either comment out the ones to not 
   - 220_filters_esxi
   - 230_filters_vcenter
   - 240_filters_quagga
-#  - 250_filters_vmware_nsx
-  - 260_filters_mysql
   - 999_outputs
-logstash_configs_remove:  #define configs that were in logstash_configs but no longer needed below to remove them nodes.
-  - 250_filters_vmware_nsx
+logstash_configs_remove:  #define configs that were in logstash_configs but no longer needed below to remove them nodes. Move to logstash_configs to enable...
+  - 250_filters_vmware_nsx  #not working
+  - 260_filters_mysql  #not working
 logstash_file_inputs:
   - path: /var/log/nginx/access.log
     type: nginx-access
