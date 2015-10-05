@@ -5,11 +5,11 @@ filter {
   if "syslog" in [tags] and "pre-processed" not in [tags] {
     if [pre_syslog_program] == "mysqld" {
       multiline {
-        pattern => "memb \{"
+        pattern => "memb {"
         what => "next"
       }
       multiline {
-        pattern => "\})"
+        pattern => "})"
         what => "previous"
       }
       mutate {
