@@ -18,7 +18,7 @@
   when: skip_validation is not defined or (skip_validation is defined and not skip_validation)
 
 - name: config_logstash | configuring logstash
-  template: src=etc/logstash/conf.d/{{ item }}.conf.j2 dest={{ logstash_config_dir }}/{{ item }}.conf owner=logstash group=logstash mode=0644'
+  template: src=etc/logstash/conf.d/{{ item }}.conf.j2 dest={{ logstash_config_dir }}/{{ item }}.conf owner=logstash group=logstash mode=0644
   notify: restart logstash
   with_items: logstash_configs
   when: skip_validation is defined and skip_validation
