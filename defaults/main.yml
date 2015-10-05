@@ -9,7 +9,7 @@ hadoopnaming: [] #define your Hadoop naming standards if used...this should be s
 #  - hd  #uncomment and remove '' above if setting
 logstash_config_dir: /etc/logstash/conf.d
 logstash_log_dir: /var/log/logstash
-logstash_configs:
+logstash_configs:  #define configs to load...either comment out the ones to not load or move them to logstash_configs_remove
   - 000_inputs
   - 001_filters
   - 200_filters_syslog
@@ -18,6 +18,7 @@ logstash_configs:
   - 230_filters_vcenter
   - 240_filters_quagga
 #  - 250_filters_vmware_nsx
+  - 260_filters_mysql
   - 999_outputs
 logstash_configs_remove:  #define configs that were in logstash_configs but no longer needed below to remove them nodes.
   - 250_filters_vmware_nsx
