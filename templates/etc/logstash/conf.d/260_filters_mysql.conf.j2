@@ -10,7 +10,6 @@ filter {
       }
       multiline {
         pattern => "^%{NUMBER} *%{NUMBER}"
-        negate => true
         what => "previous"
       }
       if "multiline" in [tags] {
