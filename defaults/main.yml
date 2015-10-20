@@ -12,6 +12,7 @@ logstash_log_dir: /var/log/logstash
 logstash_configs:  #define configs to load...either comment out the ones to not load or move them to logstash_configs_remove
   - 000_inputs
   - 001_filters
+  - 002_metrics  #comment out if metrics for logstash processing are not required..good for keeping track of throughput
   - 200_filters_syslog
   - 210_filters_pfsense
   - 220_filters_esxi
