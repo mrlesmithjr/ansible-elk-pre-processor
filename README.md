@@ -103,6 +103,7 @@ pfsensenaming:  #define your PFSense firewall naming standards if used...this sh
   - pfsense
 reset_logstash_config: false
 rundeck_logstash_port: 9700
+vcenter_version: vcsa_6  #defines vcenter version...options- windows_5, windows_6, vcsa_5 or vcsa_6
 ````
 vars/main.yml
 ````

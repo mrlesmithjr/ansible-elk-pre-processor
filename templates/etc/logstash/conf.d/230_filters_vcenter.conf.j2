@@ -39,6 +39,7 @@ filter {
         replace => [ "host", "%{syslog_hostname}" ]
       }
     }
+{% if vcenter_version is defined and vcenter_version == "vcsa_6" %}
     if "syslog5424_host" {
       mutate {
         replace => [ "host", "%{syslog5424_host}" ]
@@ -49,6 +50,7 @@ filter {
         add_field => [ "syslog_program", "%{syslog5424_app}" ]
       }
     }
+{% endif %}
     mutate {
       add_tag => [ "pre-processed" ]
     }
