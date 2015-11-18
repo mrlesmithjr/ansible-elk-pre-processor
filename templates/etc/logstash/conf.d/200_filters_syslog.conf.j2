@@ -24,7 +24,7 @@ filter {
 {%   for item in hadoopnaming %}
     if "{{ item }}" in [syslog_host_id] {
       mutate {
-        add_tag = [ "Hadoop" ]
+        add_tag => [ "Hadoop" ]
       }
     }
 {%   endfor %}
