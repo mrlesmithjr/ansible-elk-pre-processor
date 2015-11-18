@@ -3,7 +3,10 @@
 filter {
   if "syslog" in [tags] {
     grok {
-      match => { "message" => "<%{POSINT}>%{SYSLOGTIMESTAMP} %{SYSLOGHOST:syslog_host_id} %{DATA:pre_syslog_program}(?:\[%{POSINT:pre_syslog_pid}\])?: %{GREEDYDATA}" }
+      match => [
+        "message", "<%{POSINT}>%{TIMESTAMP_ISO8601} %{SYSLOGHOST:syslog_host_id} %{DATA:pre_syslog_program}(?:\[%{POSINT:pre_syslog_pid}\])?: %{GREEDYDATA}",
+        "message", "<%{POSINT}>%{SYSLOGTIMESTAMP} %{SYSLOGHOST:syslog_host_id} %{DATA:pre_syslog_program}(?:\[%{POSINT:pre_syslog_pid}\])?: %{GREEDYDATA}"
+      ]
     }
     mutate {
       add_field => [ "pre-msg", "%{message}" ]
