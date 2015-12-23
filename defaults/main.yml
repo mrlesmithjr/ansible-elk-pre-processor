@@ -51,7 +51,7 @@ logstash_inputs:
     port: 28778
     type: elasticsearch-curator
   - prot: tcp
-    format: json
+    codec: json
     port: 3515
     type: eventlog
   - prot: tcp

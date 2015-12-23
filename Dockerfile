@@ -44,4 +44,4 @@ EXPOSE 514 514/udp 1514 1515 1517 3515 3525 10514
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["logstash", "agent"]
+CMD ["logstash", "agent", "-f", "/etc/logstash/conf.d/"]
