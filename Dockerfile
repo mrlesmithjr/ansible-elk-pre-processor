@@ -40,6 +40,8 @@ ENV PATH /opt/logstash/bin:$PATH
 
 COPY docker-entrypoint.sh /
 
+EXPOSE 514 514/udp 1514 1515 1517 3515 3525 10514
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["logstash", "agent"]
