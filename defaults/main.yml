@@ -22,6 +22,7 @@ logstash_configs_remove:  #define configs that were in logstash_configs but no l
   - 002_metrics  #comment out if metrics for logstash processing are not required..good for keeping track of throughput...removed because of incompatabilities w/ES 2.x
   - 250_filters_vmware_nsx  #not working
   - 260_filters_mysql  #not working
+logstash_custom_template: false  #defines if a custom elasticsearch template for logstash is desired.
 logstash_file_inputs:
   - path: /var/log/nginx/access.log
     type: nginx-access
