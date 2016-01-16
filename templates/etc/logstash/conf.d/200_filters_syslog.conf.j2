@@ -13,10 +13,10 @@ filter {
       add_field => [ "pre-msg", "%{message}" ]
     }
 {% if logstash_custom_tagging is defined %}
-{%   for tag in logstash_custom_tagging %}
-{%     for name in tag.naming %}
+{%   for item in logstash_custom_tagging %}
+{%     for name in item.naming %}
     if "{{ name }}" in [syslog_host_id] {
-      add_tag => [ "{{ tag.name }}"]
+      add_tag => [ "{{ item.tag }}"]
     }
 {%     endfor %}
 {%   endfor %}
