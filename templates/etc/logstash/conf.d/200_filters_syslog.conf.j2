@@ -14,9 +14,9 @@ filter {
     }
 {% if logstash_custom_tagging is defined %}
 {%   for tag in logstash_custom_tagging %}
-{%     for name in tag %}
+{%     for name in tag.naming %}
     if "{{ name }}" in [syslog_host_id] {
-      add_tag => [ "{{ tag }}"]
+      add_tag => [ "{{ tag.name }}"]
     }
 {%     endfor %}
 {%   endfor %}
