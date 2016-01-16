@@ -16,7 +16,9 @@ filter {
 {%   for item in logstash_custom_tagging %}
 {%     for name in item.naming %}
     if "{{ name }}" in [syslog_host_id] {
-      add_tag => [ "{{ item.tag }}"]
+      mutate {
+        add_tag => [ "{{ item.tag }}"]
+      }
     }
 {%     endfor %}
 {%   endfor %}
