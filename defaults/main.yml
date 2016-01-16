@@ -22,6 +22,27 @@ logstash_configs_remove:  #define configs that were in logstash_configs but no l
   - 002_metrics  #comment out if metrics for logstash processing are not required..good for keeping track of throughput...removed because of incompatabilities w/ES 2.x
   - 250_filters_vmware_nsx  #not working
   - 260_filters_mysql  #not working
+logstash_custom_tagging:  #Define ESXi, Hadoop, vCenter, Netscaler and etc type specific...replaces old naming methods. Uses DNS naming to define.
+  - tag: 'ESXi'
+    naming:
+      - 'esxi'
+      - 'ESXi'
+#  - tag: 'Hadoop'
+#    naming:
+#      - 'hd-prod'
+#      - 'hd-dev'
+#  - tag: 'NSX'
+#    naming:
+#      - 'nsx-rt'
+#      - 'vShield-edge'
+  - tag: 'PFSense'
+    naming:
+      - 'pfsense'
+  - tag: 'vCenter'
+    naming:
+      - 'vcsa'
+      - 'atl-vc'
+      - 'ny-vc'
 logstash_file_inputs:
   - path: /var/log/nginx/access.log
     type: nginx-access
