@@ -43,6 +43,7 @@ logstash_custom_tagging:  #Define ESXi, Hadoop, vCenter, Netscaler and etc type 
       - 'vcsa'
       - 'atl-vc'
       - 'ny-vc'
+logstash_custom_template: false  #defines if a custom elasticsearch template for logstash is desired.
 logstash_file_inputs:
   - path: /var/log/nginx/access.log
     type: nginx-access
