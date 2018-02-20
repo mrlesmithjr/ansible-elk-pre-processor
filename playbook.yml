@@ -4,6 +4,13 @@
   vars:
     # defines if rsyslog should be reconfigured
     configure_rsyslog: true
+    logstash_outputs:
+      - output: rabbitmq
+        exchange: logstash
+        exchange_type: direct
+        host: 192.168.250.100
+        user: logstash
+        password: logstash
     # defines primary domain name
     pri_domain_name: example.org
     # defines if rsyslog should be configured to listen on tcp/514
@@ -12,8 +19,7 @@
     rsyslog_allow_udp: true
     # defines remote syslog servers
     syslog_servers:
-      # Define your LB VIP here if using a LB otherwise define as localhost
-      - name: 192.168.250.100
+      - name: localhost
         proto: tcp
         port: 10514
     skip_validation: true

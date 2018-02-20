@@ -22,6 +22,12 @@ output {
 {%     if item.output == "rabbitmq" %}
     exchange => "{{ item.exchange }}"
     exchange_type => "{{ item.exchange_type }}"
+{%       if item['user'] is defined %}
+    user => "{{ item['user'] }}"
+{%       endif %}
+{%       if item['password'] is defined %}
+    password => "{{ item['password'] }}"
+{%       endif %}
 {%     endif %}
   }
 }
