@@ -99,3 +99,4 @@
     group: "logstash"
   notify: "restart logstash"
   with_items: '{{ logstash_grok_patterns }}'
+  when: logstash_grok_patterns != []
