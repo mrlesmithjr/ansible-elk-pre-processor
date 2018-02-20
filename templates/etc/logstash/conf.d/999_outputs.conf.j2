@@ -1,5 +1,4 @@
-# {{ ansible_managed }}
-#
+{{ ansible_managed|comment }}
 output {
   if "metric" in [tags] {
     stdout {
@@ -9,7 +8,7 @@ output {
     }
   }
 }
-{% if logstash_outputs is defined %}
+{% if logstash_outputs != [] %}
 {%   for item in logstash_outputs %}
 output {
   {{ item.output }} {
