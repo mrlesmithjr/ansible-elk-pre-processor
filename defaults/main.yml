@@ -1,7 +1,6 @@
 ---
 # defaults file for ansible-elk-pre-processor
 clear_logstash_config: false
-config_hosts_file: false  #defines if /etc/hosts should include ELK hosts...if DNS not configured...Vagrant testing.
 config_logstash: true
 esxinaming:  #define your VMware ESXi naming standards if used...this should be set to host pattern...example - esxi01.everythingshouldbevirtual.local - define as esxi
   - esxi
